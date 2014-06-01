@@ -8,13 +8,13 @@
 #include <stdint.h>
 #include "belt.h"
 
-#define RotHi(x, r)		(((x) << (r)) | ((x) >> (32 - (r))))
+#define RotHi(x, r) (((x) << (r)) | ((x) >> (32 - (r))))
 #define HU1(x,H) ((uint32_t) ((H)[ (((x) >> 24) & 0xff) ]) << 24 )
 #define HU2(x,H) ((uint32_t) ((H)[ (((x) >> 16) & 0xff) ]) << 16 )
 #define HU3(x,H) ((uint32_t) ((H)[ (((x) >>  8) & 0xff) ]) <<  8 )
 #define HU4(x,H) ((uint32_t) ((H)[ (((x) >>  0) & 0xff) ]) <<  0 )
-#define G(x,H,r)	RotHi(HU4((x),(H)) | HU3((x),(H)) | HU2((x),(H)) | HU1((x),(H)),(r))
-#define SWAP(x,y,tmp)	(tmp) = (x); (x) = (y); (y) = (tmp);
+#define G(x,H,r) RotHi(HU4((x),(H)) | HU3((x),(H)) | HU2((x),(H)) | HU1((x),(H)),(r))
+#define SWAP(x,y,tmp) (tmp) = (x); (x) = (y); (y) = (tmp);
 
 static uint32_t load32(const void *in)
 {
