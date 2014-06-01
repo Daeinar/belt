@@ -90,7 +90,7 @@ void belt_init(uint8_t *ks, const uint8_t *k, size_t klen)
         break;
 
         case 32:
-            for(i = 0; i < 32; ++i)
+            for (i = 0; i < 32; ++i)
             {
                 ks[i] = k[i];
             }
@@ -114,7 +114,7 @@ void belt_encrypt(uint8_t *out, const uint8_t *in, const uint8_t *ks)
         key[i] = load32(ks + (4*i));
     }
 
-    for(i = 0; i < 8; ++i)
+    for (i = 0; i < 8; ++i)
     {
         b ^= G((a + key[KeyIndex[i][0]]),H,5);
         c ^= G((d + key[KeyIndex[i][1]]),H,21);
@@ -146,12 +146,12 @@ void belt_decrypt(uint8_t *out, const uint8_t *in, const uint8_t *ks)
     uint32_t tmp;
     uint32_t key[8] = {0};
 
-    for(i = 0; i < 8; ++i)
+    for (i = 0; i < 8; ++i)
     {
         key[i] = load32(ks + (4*i));
     }
 
-    for(i = 0; i < 8; ++i)
+    for (i = 0; i < 8; ++i)
     {
         b ^= G((a + key[KeyIndex[7 - i][6]]), H, 5);
         c ^= G((d + key[KeyIndex[7 - i][5]]), H, 21);
