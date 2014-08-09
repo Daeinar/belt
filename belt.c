@@ -80,10 +80,9 @@ void belt_init(uint8_t *ks, const uint8_t *k, size_t klen)
         break;
 
         case 24:
-            for (i = 0; i < 16; ++i)
+            for (i = 0; i < 24; ++i)
             {
-                ks[i+ 0] = k[i];
-                ks[i+16] = k[i];
+                ks[i] = k[i];
             }
             store32(ks + 24, load32(k +  0) ^ load32(k +  4) ^ load32(k +  8));
             store32(ks + 28, load32(k + 12) ^ load32(k + 16) ^ load32(k + 20));
